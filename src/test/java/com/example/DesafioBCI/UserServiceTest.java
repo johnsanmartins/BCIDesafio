@@ -20,7 +20,7 @@ import com.example.DesafioBCI.repository.UserRepository;
 import com.example.DesafioBCI.service.UserService;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTest {
+class UserServiceTest {
 
     @InjectMocks
     private UserService userService;
@@ -29,7 +29,7 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @Test
-    public void testCreateUser_Success() {
+    void testCreateUser_Success() {
         Usuario user = createUserObject();
         Mockito.when(userRepository.existsByEmail(Mockito.anyString())).thenReturn(false);
         Mockito.when(userRepository.save(Mockito.any(Usuario.class))).thenReturn(user);
@@ -42,7 +42,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testCreateUser_UserAlreadyExistsException() {
+     void testCreateUser_UserAlreadyExistsException() {
     	Usuario user = createUserObject();
         Mockito.when(userRepository.existsByEmail(Mockito.anyString())).thenReturn(true);
 

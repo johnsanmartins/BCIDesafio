@@ -1,6 +1,7 @@
 package com.example.DesafioBCI;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Collections;
@@ -20,7 +21,7 @@ import com.example.DesafioBCI.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(UserController.class)
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -32,14 +33,18 @@ public class UserControllerTest {
     private UserController userController;
 
     @Test
-    public void testCreateUser() throws Exception {
+    void testCreateUser() throws Exception {
         Usuario user = createUserObject();
         Mockito.when(userService.createUser(Mockito.any(Usuario.class))).thenReturn(user);
 
         mockMvc.perform(post("/api/users/create")
                 .contentType("application/json")
                 .content(new ObjectMapper().writeValueAsString(user)))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.name").value("Juan Rodriguez"))
+                .andExpect(jsonPath("$.email").value("juan@rodriguez.org"))
+                .andExpect(jsonPath("$.telefonos").isArray());
+        
     }
 
     private Usuario createUserObject() {
