@@ -16,10 +16,7 @@ import com.example.DesafioBCI.exception.UserAlreadyExistsException;
 import com.example.DesafioBCI.service.UserService;
 import com.example.DesafioBCI.utils.EmailValidator;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
