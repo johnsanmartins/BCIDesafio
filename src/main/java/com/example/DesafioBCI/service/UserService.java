@@ -33,7 +33,6 @@ public class UserService {
 		user.setCreated(now);
 		user.setModified(now);
 		user.setLastLogin(now);
-
 		user.setToken(token);
 		user.setActive(true);
 

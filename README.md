@@ -2,7 +2,6 @@
 
 http://localhost:8080/swagger-ui/index.html#/user-controller/createUser
 
-
 **Una vez ahi ingresar el siguiente JSON
 
 {

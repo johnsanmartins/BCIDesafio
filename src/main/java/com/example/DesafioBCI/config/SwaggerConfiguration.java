@@ -15,6 +15,7 @@ import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
+
 @Configuration
 public class SwaggerConfiguration {
 
@@ -29,7 +30,7 @@ public class SwaggerConfiguration {
 
 		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
-	
+
 	private ApiKey apiKey() {
 		return new ApiKey("JWT", "Authorization", "header");
 	}
